@@ -1,0 +1,13 @@
+#container div {
+    box-sizing: border-box;
+    border: 1px solid lightgrey;
+}
+
+#container {
+    margin: 5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    height: 600px;
+    width: 600px;
+}
