@@ -9,17 +9,20 @@ function generateGrid(size) {
         newPixelDimension = 100 / size;
         newPixel = document.createElement('div');
         newPixel.setAttribute('id', ('div' + i));
-        newPixel.setAttribute('style', `height: ${newPixelDimension}%; width: ${newPixelDimension}%`);
+        newPixel.setAttribute('style', `height: ${newPixelDimension}%; width: ${newPixelDimension}%; filter: brightness(1.0)`);
         container.appendChild(newPixel);
     }
 }
 
 function promptUser() {
     let userInput;
-    while (userInput < 1 || userInput === undefined || userInput > 100) {
+    while (userInput < 1 || userInput === undefined || userInput > 100 || isNaN(userInput)) {
         userInput = prompt("What size would you like your grid to be?")
-        if (userInput < 1 || userInput > 100) {
-            alert("Please enter a number between 1 and 100.")
+        if (userInput == null) {
+            break;
+        }
+        else if (userInput < 1 || userInput > 100 || isNaN(userInput)) {
+            alert("Please enter a number between 1 and 100.");
         }
         else {
             container.innerHTML = "";
@@ -37,14 +40,19 @@ function random(number) {
 let field = document.querySelector('#container');
 field.addEventListener('mouseover', (event) => {
     targetedPixel = event.target;
-    if (rainbowMode) {
-        let randomColor = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
-        targetedPixel.style.backgroundColor = randomColor;
-    } else if (shadingMode) {
-        targetedPixel.style.backgroundColor = 'rgb(100, 100, 100)';
-    } else {
-        targetedPixel.style.backgroundColor = 'rgb(27, 27, 27)';
-    }
+    if (targetedPixel !== field) {
+        if (rainbowMode) {
+            let randomColor = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+            targetedPixel.style.backgroundColor = randomColor;
+        } else if (shadingMode) {
+            let currentBrightness = targetedPixel.style.filter;
+            let newBrightness = (Number.parseFloat(currentBrightness.substring(11, 14))) - 0.1;
+            console.log('brightness(' + newBrightness + ');')
+            targetedPixel.style.filter = 'brightness(' + newBrightness + ')'
+        } else {
+            targetedPixel.style.backgroundColor = 'rgb(27, 27, 27)';
+        }
+    };
 })
 
 // Buttons
@@ -52,9 +60,13 @@ const rainbowButton = document.querySelector("#rainbowButton");
 rainbowButton.addEventListener("click", () => {
     if (rainbowMode) {
         rainbowMode = false;
+        rainbowButton.className = "";
     } else {
         rainbowMode = true;
+        rainbowButton.className += "activatedButton";
         shadingMode = false;
+        shadyButton.className = "";
+
     }
 })
 
@@ -62,9 +74,12 @@ const shadyButton = document.querySelector("#shadyButton");
 shadyButton.addEventListener("click", () => {
     if (shadingMode) {
         shadingMode = false;
+        shadyButton.className = "";
     } else {
         rainbowMode = false;
+        rainbowButton.className = "";
         shadingMode = true;
+        shadyButton.className += "activatedButton";
     }
 })
 

@@ -17,6 +17,7 @@ footer {
     box-sizing: border-box;
     border: 1px solid lightgrey;
     background-color: rgb(240, 240, 240);
+    filter: brightness(1.0);
 }
 
 #container {
@@ -37,7 +38,6 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* margin: 0 10%; */
     width: 100%;
 }
 
@@ -54,11 +54,9 @@ button {
     box-sizing: border-box;
     height: 100px;
     width: 100px;
-    min-height: 20%;
-    min-width: 20%;
-    border-radius: 35px;
+    border-radius: 100px;
     border-style: none;
-    padding: 1rem;
+    padding: 10px;
 }
 
 #shadyButton:hover, #rainbowButton:hover, #newGridButton:hover {
@@ -78,4 +76,9 @@ footer {
     text-align: center;
     padding: 1rem;
     margin-top: 1rem;
+}
+
+.activatedButton {
+    border: 10px double red;
+    background-color: lightgray;
 }
