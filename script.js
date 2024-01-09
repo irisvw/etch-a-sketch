@@ -1,3 +1,4 @@
+generateGrid(16);
 
 function generateGrid(size) {
     for (i = 1; i <= (size * size); i++) {
@@ -9,15 +10,18 @@ function generateGrid(size) {
     }
 }
 
-let userInput;
-while (userInput < 1 || userInput === undefined || userInput > 100) {
-    userInput = prompt("What size would you like your grid to be?")
-    if (userInput < 1 || userInput > 100) {
-        alert("Please enter a number between 1 and 100.")
-    }
-    else {
-        generateGrid(userInput);
-        break;
+function promptUser() {
+    let userInput;
+    while (userInput < 1 || userInput === undefined || userInput > 100) {
+        userInput = prompt("What size would you like your grid to be?")
+        if (userInput < 1 || userInput > 100) {
+            alert("Please enter a number between 1 and 100.")
+        }
+        else {
+            container.innerHTML = "";
+            generateGrid(userInput);
+            break;
+        }
     }
 }
 
@@ -28,4 +32,7 @@ field.addEventListener('mouseover', (event) => {
     targetedPixel.style.backgroundColor = 'red';
 })
 
-// Do something with event target. 
+const newGridButton = document.querySelector("#newGridButton");
+newGridButton.addEventListener("click", () => {
+    promptUser();
+})
