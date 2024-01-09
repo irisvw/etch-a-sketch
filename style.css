@@ -59,7 +59,7 @@ button {
     padding: 1rem;
 }
 
-button:hover {
+#shadyButton:hover, #rainbowButton:hover, #newGridButton:hover {
     background-color: lightgray;
 }
 

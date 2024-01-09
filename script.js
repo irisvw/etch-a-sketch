@@ -1,5 +1,9 @@
-generateGrid(16);
+generateGrid(16); // Starting grid
 
+let rainbowMode = false;
+let shadingMode = false;
+
+// Functions
 function generateGrid(size) {
     for (i = 1; i <= (size * size); i++) {
         newPixelDimension = 100 / size;
@@ -25,11 +29,43 @@ function promptUser() {
     }
 }
 
-let field = document.querySelector('#container');
+function random(number) {
+    return Math.floor(Math.random() * (number + 1));
+}
 
+// Sketching
+let field = document.querySelector('#container');
 field.addEventListener('mouseover', (event) => {
     targetedPixel = event.target;
-    targetedPixel.style.backgroundColor = 'rgb(27, 27, 27)';
+    if (rainbowMode) {
+        let randomColor = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+        targetedPixel.style.backgroundColor = randomColor;
+    } else if (shadingMode) {
+        targetedPixel.style.backgroundColor = 'rgb(100, 100, 100)';
+    } else {
+        targetedPixel.style.backgroundColor = 'rgb(27, 27, 27)';
+    }
+})
+
+// Buttons
+const rainbowButton = document.querySelector("#rainbowButton");
+rainbowButton.addEventListener("click", () => {
+    if (rainbowMode) {
+        rainbowMode = false;
+    } else {
+        rainbowMode = true;
+        shadingMode = false;
+    }
+})
+
+const shadyButton = document.querySelector("#shadyButton");
+shadyButton.addEventListener("click", () => {
+    if (shadingMode) {
+        shadingMode = false;
+    } else {
+        rainbowMode = false;
+        shadingMode = true;
+    }
 })
 
 const newGridButton = document.querySelector("#newGridButton");
