@@ -29,7 +29,7 @@ let field = document.querySelector('#container');
 
 field.addEventListener('mouseover', (event) => {
     targetedPixel = event.target;
-    targetedPixel.style.backgroundColor = 'red';
+    targetedPixel.style.backgroundColor = 'rgb(27, 27, 27)';
 })
 
 const newGridButton = document.querySelector("#newGridButton");

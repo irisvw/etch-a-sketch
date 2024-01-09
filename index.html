@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="container">
+    <div class="wrapper">
+        <header>
+            <h1>Etch-a-Sketch</h1>
+        </header>
+        <div class="main">
+            <div id="container">
+            </div>
+            <div class="buttonContainer">
+                <button>Rainbow mode</button>
+                <button id="newGridButton">Generate a new grid!</button>
+                <button>Shading mode</button>
+            </div>
+        </div>
+        <footer>Made with ♥ by Iris - for the Odin Project</footer>
+
     </div>
-    <button id="newGridButton">Generate a new grid!</button>
     <script src="script.js"></script>
 </body>
+
 </html>
 
 <!-- Okay.
