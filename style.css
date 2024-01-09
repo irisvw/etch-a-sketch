@@ -59,12 +59,20 @@ button {
     padding: 1rem;
 }
 
+button:hover {
+    background-color: lightgray;
+}
+
 .buttonContainer {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 3%;
 }
 
 footer {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    border-top: 1px solid white;
 }
